@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sample_app/features/products/domaine/product_model.dart';
-import 'package:sample_app/features/products/presentation/products_home/products_controller.dart';
-import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../domaine/add_product_model.dart';
@@ -22,7 +20,6 @@ class LocalProductDataSoruce {
   final SharedPreferences sharedPreferences;
 
   LocalProductDataSoruce({required this.sharedPreferences});
-      // final products = sharedPreferences.getString('products');
         static const String _productsKey = 'products';
     // final products = [
     //   ProductModel(

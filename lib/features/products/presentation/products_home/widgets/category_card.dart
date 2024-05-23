@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sample_app/consts/app_colors.dart';
-import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
 import '../../../domaine/category.dart';
 
@@ -33,7 +32,7 @@ class CategoryCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   category.id == 0
-                      ? const CustomCatCard()
+                      ? const SeeAllCard()
                       : Image.network(
                           category.imageUrl,
                           width: 80,
@@ -54,8 +53,8 @@ class CategoryCard extends StatelessWidget {
   }
 }
 
-class CustomCatCard extends StatelessWidget {
-  const CustomCatCard({
+class SeeAllCard extends StatelessWidget {
+  const SeeAllCard({
     super.key,
   });
 
