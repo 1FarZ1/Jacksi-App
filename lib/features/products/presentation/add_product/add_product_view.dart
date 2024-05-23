@@ -5,11 +5,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sample_app/consts/app_colors.dart';
-import 'package:sample_app/features/products/domaine/product_model.dart';
 import 'package:sample_app/features/products/presentation/products_home/products_controller.dart';
+import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
-import '../../../../utils/validators.dart';
 import '../../domaine/add_product_model.dart';
+import '../products_home/widgets/button_icon_widget.dart';
 import 'widgets/custom_button.dart';
 import 'widgets/custom_category_drop_down.dart';
 import 'widgets/custom_text_form_field.dart';
@@ -49,6 +49,7 @@ class AddProductView extends HookConsumerWidget {
               price: double.parse(priceController.text),
               storeName: storeNameController.text,
               categoryId: category.value,
+              // for now im just using the network imagws , but i can use FileImage rather then NetworkImage
               imageUrl: '',
             ),
           );
@@ -75,9 +76,13 @@ class AddProductView extends HookConsumerWidget {
       child: SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              title: const Text('إضافة منتجات'),
-              centerTitle: true,
-            ),
+                title: const Text('إضافة منتجات'),
+                centerTitle: true,
+                leading: ButtonIconWidget(
+                    icon: 'assets/back.svg',
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    })),
             body: Padding(
               padding: const EdgeInsets.all(16),
               child: SingleChildScrollView(

@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sample_app/consts/app_colors.dart';
 import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
+import '../../../domaine/category.dart';
+
 class CategoryCard extends StatelessWidget {
   const CategoryCard(
       {super.key,

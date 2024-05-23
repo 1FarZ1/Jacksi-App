@@ -2,39 +2,27 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sample_app/common/async_value_widget.dart';
 import 'package:sample_app/consts/app_colors.dart';
 
+import '../../../../utils/enums.dart';
+import '../../domaine/category.dart';
 import '../add_product/add_product_view.dart';
+import 'widgets/button_icon_widget.dart';
 import 'widgets/category_card.dart';
 import 'widgets/change_view_widget.dart';
 import 'widgets/custom_grid_view.dart';
 import 'widgets/custom_list_view.dart';
 import 'products_controller.dart';
 
-class Category {
-  final int id;
-  final String name;
-  final String imageUrl;
-
-  const Category(
-      {required this.id, required this.name, required this.imageUrl});
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is Category && other.id == id;
-  }
-}
-
-enum CategoryType {
-  all,
-  electronics,
-  clothing,
-  shoes,
-}
+// enum CategoryType {
+//   all,
+//   electronics,
+//   clothing,
+//   shoes,
+// }
 
 final currentCategoryProvider = StateProvider<int>((ref) => 0);
 
@@ -68,11 +56,6 @@ final categoriesProvider = Provider<List<Category>>((ref) {
   ];
 });
 
-enum ViewStyle {
-  list,
-  grid,
-}
-
 class ProductsView extends HookConsumerWidget {
   const ProductsView({super.key});
 
@@ -86,8 +69,8 @@ class ProductsView extends HookConsumerWidget {
       child: Scaffold(
         appBar:
             AppBar(title: const Text('المنتجات'), centerTitle: true, actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
+          ButtonIconWidget(
+            icon: 'assets/plus.svg',
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -95,7 +78,7 @@ class ProductsView extends HookConsumerWidget {
                 ),
               );
             },
-          ),
+          )
         ]),
         body: Padding(
           padding: const EdgeInsets.symmetric(
@@ -166,4 +149,3 @@ class ProductsView extends HookConsumerWidget {
     ));
   }
 }
-

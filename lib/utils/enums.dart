@@ -1,0 +1,5 @@
+
+enum ViewStyle {
+  list,
+  grid,
+}
