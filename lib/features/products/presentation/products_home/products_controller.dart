@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/product_repository.dart';
@@ -46,15 +48,14 @@ class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
     try {
       final product = await productRepository.addProduct(addProductModel);
 
-      
-      // if (addProductModel.categoryId == categoryId){
-      //   state = AsyncValue.data([...state.value!,product]);
-      // }
-      // else{
-      //   state = AsyncValue.data([...state.value!]);
+      // if (addProductModel.categoryId == categoryId) {
+      //   state = AsyncValue.data([...state.asData!.value, product]);
+      // } else {
+      //   state = AsyncValue.data([...state.asData!.value]);
       // }
       getProducts();
     } catch (e, st) {
+      log(e.toString());
       state = AsyncValue.error(e, st);
     }
   }

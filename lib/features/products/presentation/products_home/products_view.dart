@@ -43,6 +43,12 @@ final categoriesProvider = Provider<List<Category>>((ref) {
       'https://images.unsplash.com/photo-1429087969512-1e85aab2683d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
   return [
     const Category(
+      id: 0,
+      name: ' عرض الكل ',
+      imageUrl:
+          'https://images.unsplash.com/photo-1527195612250-460488c1ad32?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    ),
+    const Category(
       id: 1,
       name: ' تصنيف 1',
       imageUrl:

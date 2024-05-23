@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sample_app/consts/app_colors.dart';
 import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
@@ -29,12 +30,14 @@ class CategoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.network(
-                    category.imageUrl,
-                    width: 80,
-                    height: 60,
-                    fit: BoxFit.cover,
-                  ),
+                  category.id == 0
+                      ? const CustomCatCard()
+                      : Image.network(
+                          category.imageUrl,
+                          width: 80,
+                          height: 60,
+                          fit: BoxFit.cover,
+                        ),
                   const SizedBox(height: 4),
                   Text(
                     category.name,
@@ -45,6 +48,33 @@ class CategoryCard extends StatelessWidget {
                   ),
                 ],
               ))),
+    );
+  }
+}
+
+class CustomCatCard extends StatelessWidget {
+  const CustomCatCard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        SvgPicture.asset(
+          'assets/rect.svg',
+          width: 80,
+          height: 60,
+          fit: BoxFit.cover,
+        ),
+        SvgPicture.asset(
+          'assets/icon.svg',
+          width: 40,
+          height: 30,
+          fit: BoxFit.cover,
+        ),
+      ],
     );
   }
 }

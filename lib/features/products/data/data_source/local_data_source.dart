@@ -22,43 +22,43 @@ class LocalProductDataSoruce {
   LocalProductDataSoruce({required this.sharedPreferences});
       // final products = sharedPreferences.getString('products');
         static const String _productsKey = 'products';
-    final products = [
-      ProductModel(
-        id: 1,
-        name: 'منتج 1',
-        price: 100,
-        storeName: 'متجر 1',
-        imageUrl:
-            'https://images.unsplash.com/photo-1522517779552-6cf4c1f31ee3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        categoryId: 1,
-      ),
-      ProductModel(
-        id: 2,
-        name: 'منتج 2',
-        price: 200,
-        storeName: 'متجر 2',
-        imageUrl:
-            'https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        categoryId: 2,
-      ),
-      ProductModel(
-          id: 3,
-          name: 'منتج 3',
-          price: 300,
-          storeName: 'متجر 3',
-          imageUrl:
-              'https://images.unsplash.com/photo-1548566862-2c9b1fed780a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-          categoryId: 3),
-      ProductModel(
-        id: 4,
-        name: 'منتج 4',
-        price: 400,
-        storeName: 'متجر 4',
-        imageUrl:
-            'https://images.unsplash.com/photo-1495985812444-236d6a87bdd9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        categoryId: 1,
-      ),
-    ];
+    // final products = [
+    //   ProductModel(
+    //     id: 1,
+    //     name: 'منتج 1',
+    //     price: 100,
+    //     storeName: 'متجر 1',
+    //     imageUrl:
+    //         'https://images.unsplash.com/photo-1522517779552-6cf4c1f31ee3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    //     categoryId: 1,
+    //   ),
+    //   ProductModel(
+    //     id: 2,
+    //     name: 'منتج 2',
+    //     price: 200,
+    //     storeName: 'متجر 2',
+    //     imageUrl:
+    //         'https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    //     categoryId: 2,
+    //   ),
+    //   ProductModel(
+    //       id: 3,
+    //       name: 'منتج 3',
+    //       price: 300,
+    //       storeName: 'متجر 3',
+    //       imageUrl:
+    //           'https://images.unsplash.com/photo-1548566862-2c9b1fed780a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    //       categoryId: 3),
+    //   ProductModel(
+    //     id: 4,
+    //     name: 'منتج 4',
+    //     price: 400,
+    //     storeName: 'متجر 4',
+    //     imageUrl:
+    //         'https://images.unsplash.com/photo-1495985812444-236d6a87bdd9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    //     categoryId: 1,
+    //   ),
+    // ];
 
 
 Future<List<ProductModel>> getProducts(int categoryId) async {
@@ -79,10 +79,10 @@ Future<List<ProductModel>> getProducts(int categoryId) async {
     return [];
   }
 
-  Future<void> seedData() async {
-    final String productsJson = json.encode(products);
-    await sharedPreferences.setString(_productsKey, productsJson);
-  }
+  // Future<void> seedData() async {
+  //   final String productsJson = json.encode(products);
+  //   await sharedPreferences.setString(_productsKey, productsJson);
+  // }
 
   Future<void> saveProducts(List<ProductModel> products) async {
     final String productsJson = json.encode(products);
