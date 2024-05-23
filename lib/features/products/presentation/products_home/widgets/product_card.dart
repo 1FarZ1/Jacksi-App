@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/features/products/domaine/product_model.dart';
-import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
 import 'custom_image.dart';
-import '../../../../../utils/string_extension.dart';
 import 'price_widget.dart';
 import 'store_widget.dart';
 

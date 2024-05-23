@@ -1,12 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sample_app/consts/app_colors.dart';
 import 'package:sample_app/features/products/presentation/products_home/products_controller.dart';
-import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
 import '../../domaine/add_product_model.dart';
 import '../products_home/widgets/button_icon_widget.dart';
@@ -104,12 +102,12 @@ class AddProductView extends HookConsumerWidget {
                       const SizedBox(height: 16),
                       CustomButton(
                           onPressed: pickImage,
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.add_a_photo, color: AppColors.white),
-                              SizedBox(width: 8),
-                              Text('اضغط لاضافة الصور ',
+                              SvgPicture.asset('assets/white_plus.svg'),
+                              const SizedBox(width: 8),
+                              const Text('اضغط لاضافة الصور ',
                                   style: TextStyle(
                                       color: AppColors.white,
                                       fontSize: 16,

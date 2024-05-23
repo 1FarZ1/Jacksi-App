@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../consts/app_colors.dart';
 import '../../../../../utils/enums.dart';
-import '../products_view.dart';
 
 class ChangeViewWidget extends StatelessWidget {
   const ChangeViewWidget({
