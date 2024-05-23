@@ -21,6 +21,7 @@ class LocalProductDataSoruce {
 
   LocalProductDataSoruce({required this.sharedPreferences});
       // final products = sharedPreferences.getString('products');
+        static const String _productsKey = 'products';
     final products = [
       ProductModel(
         id: 1,
@@ -60,27 +61,38 @@ class LocalProductDataSoruce {
     ];
 
 
-  Future<List<ProductModel>> getProducts(int categoryId) async {
-
-    // if (products != null) {
-    //   // return ProductModel.fromJson(
-    //   //   json.decode(products) as Map<String, dynamic>,
-    //   // );
-    //   [];
-    // }
-    if (categoryId != 0) {
-      return products
-          .where((element) => element.categoryId == categoryId)
+Future<List<ProductModel>> getProducts(int categoryId) async {
+    final productsString = sharedPreferences.getString(_productsKey);
+    if (productsString != null) {
+      final List<dynamic> jsonData = json.decode(productsString);
+      final List<ProductModel> products = jsonData
+          .map((productJson) => ProductModel.fromJson(productJson))
           .toList();
+
+      if (categoryId != 0) {
+        return products
+            .where((element) => element.categoryId == categoryId)
+            .toList();
+      }
+      return products;
     }
-    return products;
+    return [];
   }
 
-  Future<ProductModel> addProduct(AddProductModel addProductModel) async {
-    // final products = sharedPreferences.getString('products');
-    // final List<ProductModel> productsList;
-    // productsList.add(productModel);
-    // await sharedPreferences.setString('products', json.encode(productsList));
+  Future<void> seedData() async {
+    final String productsJson = json.encode(products);
+    await sharedPreferences.setString(_productsKey, productsJson);
+  }
+
+  Future<void> saveProducts(List<ProductModel> products) async {
+    final String productsJson = json.encode(products);
+    await sharedPreferences.setString(_productsKey, productsJson);
+  }
+
+
+    Future<ProductModel> addProduct(AddProductModel addProductModel) async {
+    final List<ProductModel> products = await getProducts(0);
+
     final product = ProductModel(
       id: products.length + 1,
       name: addProductModel.name,
@@ -91,7 +103,9 @@ class LocalProductDataSoruce {
     );
 
     products.add(product);
+    await saveProducts(products);
 
     return product;
   }
+
 }

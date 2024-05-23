@@ -139,6 +139,12 @@ class ProductsView extends HookConsumerWidget {
 
                 products.when(
                   data: (products) {
+                    if (products.isEmpty) {
+                      return const Center(
+                        child: Text('لا يوجد منتجات حالياً'),
+                      );
+                    }
+
                     return viewStyle.value == ViewStyle.list
                         ? CustomListView(
                             products: products,
@@ -149,22 +155,26 @@ class ProductsView extends HookConsumerWidget {
                   },
                   loading: () =>
                       const Center(child: CircularProgressIndicator()),
-                  error: (error, stackTrace) => Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('An error occurred'),
-                        ElevatedButton(
-                          onPressed: () {
-                            ref
-                                .read(productsControllerProvider.notifier)
-                                .getProducts();
-                          },
-                          child: const Text('Retry'),
-                        ),
-                      ],
-                    ),
-                  ),
+                  error: (error, stackTrace) {
+                    log('error: $error');
+                    log('stackTrace: $stackTrace');
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('An error occurred'),
+                          ElevatedButton(
+                            onPressed: () {
+                              ref
+                                  .read(productsControllerProvider.notifier)
+                                  .getProducts();
+                            },
+                            child: const Text('Retry'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

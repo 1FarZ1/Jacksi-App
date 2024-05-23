@@ -10,12 +10,11 @@ final productsControllerProvider =
   (ref) {
     final categoryId = ref.watch(currentCategoryProvider);
     return ProductsController(
-    productRepository: ref.watch(productRepositoryProvider),
-    categoryId: categoryId,
-  );
+      productRepository: ref.watch(productRepositoryProvider),
+      categoryId: categoryId,
+    );
   },
 );
-
 
 class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
   final ProductRepository productRepository;
@@ -24,13 +23,11 @@ class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
   ProductsController({
     required this.productRepository,
     this.categoryId = 0,
-    
   }) : super(
           const AsyncValue.loading(),
         ) {
     getProducts();
   }
-
 
   Future<void> getProducts() async {
     state = const AsyncValue.loading();
@@ -45,24 +42,25 @@ class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
   Future<void> addProduct(
     AddProductModel addProductModel,
   ) async {
-    state  = const AsyncValue.loading();
+    state = const AsyncValue.loading();
     try {
-    final product  = await productRepository.addProduct(addProductModel);
-    // if (productModel.categoryId == categoryId){
-    //   state = AsyncValue.data([...state.value!, productModel]);
-    // }
-    // else{
-    //   state = AsyncValue.data([...state.value!]);
-    // }
-    } catch (e,st) {
-      state = AsyncValue.error(e,st);
+      final product = await productRepository.addProduct(addProductModel);
+
+      
+      // if (addProductModel.categoryId == categoryId){
+      //   state = AsyncValue.data([...state.value!,product]);
+      // }
+      // else{
+      //   state = AsyncValue.data([...state.value!]);
+      // }
+      getProducts();
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
     }
-    
   }
 }
 
-
-class AddProductModel{
+class AddProductModel {
   final String name;
   final double price;
   final String storeName;

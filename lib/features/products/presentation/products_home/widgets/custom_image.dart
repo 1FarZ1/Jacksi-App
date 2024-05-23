@@ -16,7 +16,10 @@ class CustomImage extends StatelessWidget {
       height: 100,
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage(product.imageUrl), fit: BoxFit.cover),
+              image: NetworkImage(product.imageUrl.isEmpty
+                  ? 'https://via.placeholder.com/150'
+                  : product.imageUrl),
+              fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(8)),
     );
   }

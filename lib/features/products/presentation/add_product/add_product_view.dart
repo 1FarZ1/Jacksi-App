@@ -50,8 +50,24 @@ class AddProductView extends HookConsumerWidget {
               categoryId: category.value,
               imageUrl: '',
             ),
-      );
+          );
     }
+
+    ref.listen(productsControllerProvider, (prev, next) async {
+      if (next is AsyncData) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: AppColors.green,
+            content: Text('تمت الاضافة بنجاح'),
+          ),
+        );
+
+        await Future.delayed(const Duration(seconds: 1));
+        if (context.mounted) {
+          Navigator.of(context).pop();
+        }
+      }
+    });
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -125,7 +141,18 @@ class AddProductView extends HookConsumerWidget {
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
-                          if (formKey.currentState!.validate()) {}
+                          if (formKey.currentState!.validate()) {
+                            if (images.value.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content:
+                                      Text('يجب اختيار صورة واحدة على الاقل'),
+                                ),
+                              );
+                            } else {
+                              submit();
+                            }
+                          }
                         },
                       ),
                     ],
