@@ -1,16 +1,26 @@
-# sample_app
+## Jaksi-Task-App
 
-A new Flutter project.
+- This is a simple task app i made for the Jaksi Interview, it is a simple task app that allows you to add,Get Products, filter them , and change the list , add images ... ect
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Add Product
+- Get Products
+- Filter Products
+- Change View Style
+- Add Images
+- Products Stored in Local Storage
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Dependencies
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+``` yaml
+dependencies:
+  flutter_svg: ^2.0.10+1
+  image_picker: ^1.1.1
+  shared_preferences: ^2.2.3
+  flutter_riverpod: ^2.5.1
+  hooks_riverpod: ^2.5.1
+  flutter_hooks: ^0.20.5
+```
