@@ -2,7 +2,7 @@ class AddProductModel {
   final String name;
   final double price;
   final String storeName;
-  final String imageUrl;
+  final List<String> imageUrl;
   final int categoryId;
 
   AddProductModel({

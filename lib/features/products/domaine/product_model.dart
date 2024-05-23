@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import '../presentation/products_home/products_view.dart';
 
 class ProductModel {
@@ -8,7 +10,7 @@ class ProductModel {
   final String name;
   final String storeName;
   final int price;
-  final String imageUrl;
+  final List<String> imageUrl;
   final int  categoryId;
   ProductModel({
     required this.id,
@@ -24,7 +26,7 @@ class ProductModel {
     String? name,
     String? storeName,
     int? price,
-    String? imageUrl,
+    List<String>? imageUrl,
     int? categoryId,
   }) {
     return ProductModel(
@@ -54,7 +56,7 @@ class ProductModel {
       name: map['name'] as String,
       storeName: map['storeName'] as String,
       price: map['price'] as int,
-      imageUrl: map['imageUrl'] as String,
+      imageUrl: List<String>.from((map['imageUrl'] as List<String>),),
       categoryId: map['categoryId'] as int,
     );
   }
@@ -78,7 +80,7 @@ class ProductModel {
       other.name == name &&
       other.storeName == storeName &&
       other.price == price &&
-      other.imageUrl == imageUrl &&
+      listEquals(other.imageUrl, imageUrl) &&
       other.categoryId == categoryId;
   }
 

@@ -47,8 +47,7 @@ class AddProductView extends HookConsumerWidget {
               price: double.parse(priceController.text),
               storeName: storeNameController.text,
               categoryId: category.value,
-              // for now im just using the network imagws , but i can use FileImage rather then NetworkImage
-              imageUrl: '',
+              imageUrl: images.value.map((e) => e.path).toList(),
             ),
           );
     }
