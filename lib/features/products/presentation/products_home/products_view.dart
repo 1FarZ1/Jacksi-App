@@ -167,27 +167,3 @@ class ProductsView extends HookConsumerWidget {
   }
 }
 
-class ShowAllWidget extends StatelessWidget {
-  const ShowAllWidget(
-      {super.key, required this.onTap, required this.isPressed});
-  final VoidCallback onTap;
-  final bool isPressed;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          border:
-              Border.all(color: isPressed ? AppColors.white : AppColors.green),
-        ),
-        child: const Text(
-          'عرض الكل',
-          style: TextStyle(color: AppColors.white, fontSize: 12),
-        ),
-      ),
-    );
-  }
-}

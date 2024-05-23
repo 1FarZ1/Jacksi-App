@@ -9,6 +9,7 @@ import 'package:sample_app/features/products/domaine/product_model.dart';
 import 'package:sample_app/features/products/presentation/products_home/products_controller.dart';
 
 import '../../../../utils/validators.dart';
+import '../../domaine/add_product_model.dart';
 import 'widgets/custom_button.dart';
 import 'widgets/custom_category_drop_down.dart';
 import 'widgets/custom_text_form_field.dart';

@@ -6,6 +6,8 @@ import 'package:sample_app/features/products/presentation/products_home/products
 import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../domaine/add_product_model.dart';
+
 final sharedPreferencesProvider = Provider<SharedPreferences>(
   (ref) => throw UnimplementedError(),
 );
