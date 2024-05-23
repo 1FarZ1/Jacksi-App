@@ -20,9 +20,11 @@ class CustomImage extends StatelessWidget {
           image: DecorationImage(
               image: product.imageUrl.isEmpty || product.imageUrl[0].isEmpty
                   ? const NetworkImage(
-                      'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg')
-                  : FileImage(File(product.imageUrl[0])) as ImageProvider<Object>
-                  ,),
+                      'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg',
+                    )
+                  : FileImage(File(product.imageUrl[0]))
+                      as ImageProvider<Object>,
+              fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(8)),
     );
   }

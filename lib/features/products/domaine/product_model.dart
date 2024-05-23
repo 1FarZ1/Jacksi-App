@@ -9,7 +9,7 @@ class ProductModel {
   final String storeName;
   final int price;
   final List<String> imageUrl;
-  final int  categoryId;
+  final int categoryId;
   ProductModel({
     required this.id,
     required this.name,
@@ -54,7 +54,9 @@ class ProductModel {
       name: map['name'] as String,
       storeName: map['storeName'] as String,
       price: map['price'] as int,
-      imageUrl: List<String>.from((map['imageUrl'] as List<String>),),
+      imageUrl: List<String>.from(
+        (map['imageUrl'] as List),
+      ),
       categoryId: map['categoryId'] as int,
     );
   }
@@ -72,23 +74,22 @@ class ProductModel {
   @override
   bool operator ==(covariant ProductModel other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.storeName == storeName &&
-      other.price == price &&
-      listEquals(other.imageUrl, imageUrl) &&
-      other.categoryId == categoryId;
+
+    return other.id == id &&
+        other.name == name &&
+        other.storeName == storeName &&
+        other.price == price &&
+        listEquals(other.imageUrl, imageUrl) &&
+        other.categoryId == categoryId;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      storeName.hashCode ^
-      price.hashCode ^
-      imageUrl.hashCode ^
-      categoryId.hashCode;
+        name.hashCode ^
+        storeName.hashCode ^
+        price.hashCode ^
+        imageUrl.hashCode ^
+        categoryId.hashCode;
   }
 }

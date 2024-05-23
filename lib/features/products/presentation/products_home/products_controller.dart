@@ -38,6 +38,7 @@ class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
       final products = await productRepository.getProducts(categoryId);
       state = AsyncValue.data(products);
     } catch (e, st) {
+      log(e.toString());
       state = AsyncValue.error(e, st);
     }
   }
@@ -48,8 +49,8 @@ class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
     state = const AsyncValue.loading();
     try {
       final product = await productRepository.addProduct(addProductModel);
-    
-      // [this can be done also] 
+
+      // [this can be done also]
       // if (addProductModel.categoryId == categoryId) {
       //   state = AsyncValue.data([...state.asData!.value, product]);
       // } else {
