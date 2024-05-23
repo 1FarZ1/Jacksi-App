@@ -1,6 +1,6 @@
-## Jaksi-Task-App
+## Jacksi-App
 
-- This is a simple task app i made for the Jaksi Interview, made it in 2 hours , it is a simple  app that allows you to add,Get Products, filter them , and change the list , add images ... ect
+- This is a simple task app i made for the Jacksi  Interview, made it in 2 hours , it is a simple  app that allows you to add,Get Products, filter them , and change the list , add images ... ect
 
 ## Screenshots
 
