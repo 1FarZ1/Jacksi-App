@@ -14,15 +14,6 @@ import 'widgets/change_view_widget.dart';
 import 'widgets/custom_grid_view.dart';
 import 'widgets/custom_list_view.dart';
 import 'products_controller.dart';
-
-// enum CategoryType {
-//   all,
-//   electronics,
-//   clothing,
-//   shoes,
-// }
-
-
 class ProductsView extends HookConsumerWidget {
   const ProductsView({super.key});
 

@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sample_app/app.dart';
@@ -8,7 +9,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final pref = await SharedPreferences.getInstance();
-  runApp(ProviderScope(overrides: [
-    sharedPreferencesProvider.overrideWithValue(pref),
-  ], child: const TaskApp()));
+  runApp(ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(pref),
+      ],
+      child:
+          DevicePreview(enabled: true, builder: (context) => const TaskApp())));
 }
