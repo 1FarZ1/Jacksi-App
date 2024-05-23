@@ -4,6 +4,7 @@ import 'package:sample_app/features/products/presentation/products_home/products
 
 import 'custom_image.dart';
 import '../../../../../utils/string_extension.dart';
+import 'price_widget.dart';
 import 'store_widget.dart';
 
 class ListProductCard extends StatelessWidget {
@@ -21,16 +22,19 @@ class ListProductCard extends StatelessWidget {
         children: [
           CustomImage(product: product),
           const SizedBox(width: 8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(product.name,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold)),
-              Text(product.price.toString().toDollarPrice()),
-              StoreWidget(storeName: product.storeName),
-            ],
+          SizedBox(
+            height: 100,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(product.name,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold)),
+                PriceWidget(price: product.price),
+                StoreWidget(storeName: product.storeName),
+              ],
+            ),
           ),
         ],
       ),
@@ -56,7 +60,7 @@ class GridProductCard extends StatelessWidget {
           Text(product.name,
               style:
                   const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-          Text(product.price.toString().toDollarPrice()),
+          PriceWidget(price: product.price),
           StoreWidget(storeName: product.storeName),
         ],
       ),

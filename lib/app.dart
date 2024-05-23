@@ -16,6 +16,7 @@ class TaskApp extends StatelessWidget {
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
+            fontFamily: 'montserrat-arabic',
             scaffoldBackgroundColor: AppColors.scaffoldColor),
         debugShowCheckedModeBanner: false,
         home: const ProductsView(),
