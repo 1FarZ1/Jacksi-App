@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sample_app/consts/app_colors.dart';
-import 'package:sample_app/features/products/presentation/products_view.dart';
+import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
 class CustomCategoryDropDown extends HookConsumerWidget {
   const CustomCategoryDropDown({super.key, required this.onChanged});

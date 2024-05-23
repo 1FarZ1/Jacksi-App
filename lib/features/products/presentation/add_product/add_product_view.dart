@@ -5,12 +5,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sample_app/consts/app_colors.dart';
+import 'package:sample_app/features/products/domaine/product_model.dart';
+import 'package:sample_app/features/products/presentation/products_home/products_controller.dart';
 
-import '../../../utils/validators.dart';
-import 'custom_button.dart';
-import 'custom_category_drop_down.dart';
-import 'custom_text_form_field.dart';
-import 'image_picker_grid.dart';
+import '../../../../utils/validators.dart';
+import 'widgets/custom_button.dart';
+import 'widgets/custom_category_drop_down.dart';
+import 'widgets/custom_text_form_field.dart';
+import 'widgets/image_picker_grid.dart';
 
 class AddProductView extends HookConsumerWidget {
   const AddProductView({super.key});
@@ -39,8 +41,16 @@ class AddProductView extends HookConsumerWidget {
     final storeNameController = useTextEditingController();
     final category = useState<int>(1);
 
-    submit(){
-
+    submit() {
+      ref.read(productsControllerProvider.notifier).addProduct(
+            AddProductModel(
+              name: nameController.text,
+              price: double.parse(priceController.text),
+              storeName: storeNameController.text,
+              categoryId: category.value,
+              imageUrl: '',
+            ),
+      );
     }
 
     return Directionality(

@@ -43,6 +43,7 @@ class CustomTextFormField extends StatelessWidget {
           TextFormField(
             controller: controller,
             keyboardType: keyboardType,
+            validator: validator,
             obscureText: obscureText,
             decoration: InputDecoration(
               hintText: hintText,

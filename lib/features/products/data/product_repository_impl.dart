@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sample_app/features/products/data/data_source/local_data_source.dart';
 import 'package:sample_app/features/products/domaine/product_model.dart';
 
+import '../presentation/products_home/products_controller.dart';
 import 'product_repository.dart';
 
 
@@ -23,6 +24,11 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<List<ProductModel>> getProducts(int categoryId) async {
     return localDataSource.getProducts(categoryId);
+  }
+
+  @override
+  Future<ProductModel> addProduct(AddProductModel addProductModel) async {
+    return localDataSource.addProduct(addProductModel);
   }
 }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sample_app/features/products/presentation/products_view.dart';
+import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
 import 'consts/app_colors.dart';
 

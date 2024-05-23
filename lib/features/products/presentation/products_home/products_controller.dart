@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../data/product_repository.dart';
-import '../data/product_repository_impl.dart';
-import '../domaine/product_model.dart';
+import '../../data/product_repository.dart';
+import '../../data/product_repository_impl.dart';
+import '../../domaine/product_model.dart';
 import 'products_view.dart';
 
 final productsControllerProvider =
@@ -41,4 +41,39 @@ class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
       state = AsyncValue.error(e, st);
     }
   }
+
+  Future<void> addProduct(
+    AddProductModel addProductModel,
+  ) async {
+    state  = const AsyncValue.loading();
+    try {
+    final product  = await productRepository.addProduct(addProductModel);
+    // if (productModel.categoryId == categoryId){
+    //   state = AsyncValue.data([...state.value!, productModel]);
+    // }
+    // else{
+    //   state = AsyncValue.data([...state.value!]);
+    // }
+    } catch (e,st) {
+      state = AsyncValue.error(e,st);
+    }
+    
+  }
+}
+
+
+class AddProductModel{
+  final String name;
+  final double price;
+  final String storeName;
+  final String imageUrl;
+  final int categoryId;
+
+  AddProductModel({
+    required this.name,
+    required this.price,
+    required this.storeName,
+    required this.imageUrl,
+    required this.categoryId,
+  });
 }

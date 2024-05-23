@@ -5,8 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sample_app/consts/app_colors.dart';
 
-import 'add_product_view.dart';
-import 'category_card.dart';
+import '../add_product/add_product_view.dart';
+import 'widgets/category_card.dart';
 import 'widgets/change_view_widget.dart';
 import 'widgets/custom_grid_view.dart';
 import 'widgets/custom_list_view.dart';
