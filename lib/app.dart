@@ -18,14 +18,6 @@ class TaskApp extends StatelessWidget {
             useMaterial3: true,
             scaffoldBackgroundColor: AppColors.scaffoldColor),
         debugShowCheckedModeBanner: false,
-        // use the arabic
-        // locale: const Locale('ar'),
-        // supportedLocales: const [Locale('ar')],
-        // localizationsDelegates: const [
-        //   DefaultMaterialLocalizations.delegate,
-        //   DefaultWidgetsLocalizations.delegate,
-        //   DefaultCupertinoLocalizations.delegate,
-        // ],
         home: const ProductsView(),
       ),
     );

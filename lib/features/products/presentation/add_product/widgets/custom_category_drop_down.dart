@@ -54,6 +54,7 @@ class CustomCategoryDropDown extends HookConsumerWidget {
                 );
               }),
             ],
+            icon: const Icon(Icons.arrow_drop_down_circle_outlined),
             onChanged: onChanged,
           ),
         ],

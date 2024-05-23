@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sample_app/common/async_value_widget.dart';
 import 'package:sample_app/consts/app_colors.dart';
 
 import '../add_product/add_product_view.dart';
@@ -100,8 +101,8 @@ class ProductsView extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('التصنيفات',
-                    style: TextStyle(color: AppColors.grey, fontSize: 16)),
-                // horezental list view of categories
+                    style: TextStyle(color: AppColors.black, fontSize: 16)),
+                const SizedBox(height: 8),
                 SizedBox(
                   height: 120,
                   child: ListView.builder(
@@ -123,59 +124,34 @@ class ProductsView extends HookConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-
                 Align(
                   alignment: Alignment.centerLeft,
                   child: ChangeViewWidget(
                     viewStyle: viewStyle.value,
                     onTap: () {
-                      log('viewStyle.value: ${viewStyle.value}');
                       viewStyle.value = viewStyle.value == ViewStyle.list
                           ? ViewStyle.grid
                           : ViewStyle.list;
                     },
                   ),
                 ),
+                AsyncValueWidget(
+                    value: products,
+                    data: (products) {
+                      if (products.isEmpty) {
+                        return const Center(
+                          child: Text('لا يوجد منتجات حالياً'),
+                        );
+                      }
 
-                products.when(
-                  data: (products) {
-                    if (products.isEmpty) {
-                      return const Center(
-                        child: Text('لا يوجد منتجات حالياً'),
-                      );
-                    }
-
-                    return viewStyle.value == ViewStyle.list
-                        ? CustomListView(
-                            products: products,
-                          )
-                        : CustomGridView(
-                            products: products,
-                          );
-                  },
-                  loading: () =>
-                      const Center(child: CircularProgressIndicator()),
-                  error: (error, stackTrace) {
-                    log('error: $error');
-                    log('stackTrace: $stackTrace');
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text('An error occurred'),
-                          ElevatedButton(
-                            onPressed: () {
-                              ref
-                                  .read(productsControllerProvider.notifier)
-                                  .getProducts();
-                            },
-                            child: const Text('Retry'),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                      return viewStyle.value == ViewStyle.list
+                          ? CustomListView(
+                              products: products,
+                            )
+                          : CustomGridView(
+                              products: products,
+                            );
+                    })
               ],
             ),
           ),
