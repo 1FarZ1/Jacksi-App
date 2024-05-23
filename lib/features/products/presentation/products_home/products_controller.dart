@@ -48,7 +48,7 @@ class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
   ) async {
     state = const AsyncValue.loading();
     try {
-      final product = await productRepository.addProduct(addProductModel);
+      await productRepository.addProduct(addProductModel);
 
       // [this can be done also]
       // if (addProductModel.categoryId == categoryId) {
