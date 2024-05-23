@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:sample_app/features/products/domaine/product_model.dart';
 
@@ -16,10 +18,11 @@ class CustomImage extends StatelessWidget {
       height: 100,
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage(product.imageUrl.isEmpty || product.imageUrl[0].isEmpty
-                  ? 'https://via.placeholder.com/150'
-                  : product.imageUrl[0]),
-              fit: BoxFit.cover),
+              image: product.imageUrl.isEmpty || product.imageUrl[0].isEmpty
+                  ? const NetworkImage(
+                      'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg')
+                  : FileImage(File(product.imageUrl[0])) as ImageProvider<Object>
+                  ,),
           borderRadius: BorderRadius.circular(8)),
     );
   }

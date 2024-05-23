@@ -3,8 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import '../presentation/products_home/products_view.dart';
-
 class ProductModel {
   final int id;
   final String name;
