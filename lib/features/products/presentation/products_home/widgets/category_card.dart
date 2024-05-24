@@ -15,41 +15,38 @@ class CategoryCard extends StatelessWidget {
   final bool isSelected;
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: GestureDetector(
-          onTap: onTap,
-          child: Container(
-              margin: const EdgeInsets.only(left: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                      color: isSelected ? AppColors.green : AppColors.white)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  category.id == 0
-                      ? const SeeAllCard()
-                      : Image.network(
-                          category.imageUrl,
-                          width: 80,
-                          height: 60,
-                          fit: BoxFit.cover,
-                        ),
-                  const SizedBox(height: 4),
-                  Text(
-                    category.name,
-                    style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.black),
-                  ),
-                ],
-              ))),
-    );
+    return GestureDetector(
+        onTap: onTap,
+        child: Container(
+            margin: const EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                    color: isSelected ? AppColors.green : AppColors.white)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                category.id == 0
+                    ? const SeeAllCard()
+                    : Image.network(
+                        category.imageUrl,
+                        width: 80,
+                        height: 60,
+                        fit: BoxFit.cover,
+                      ),
+                const SizedBox(height: 4),
+                Text(
+                  category.name,
+                  style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black),
+                ),
+              ],
+            )));
   }
 }
 
