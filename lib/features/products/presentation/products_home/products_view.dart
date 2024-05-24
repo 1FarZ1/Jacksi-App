@@ -11,7 +11,7 @@ import 'widgets/categories_list_view.dart';
 import 'widgets/change_view_widget.dart';
 import 'widgets/custom_grid_view.dart';
 import 'widgets/custom_list_view.dart';
-import 'products_controller.dart';
+import '../products_controller.dart';
 
 class ProductsView extends HookConsumerWidget {
   const ProductsView({super.key});

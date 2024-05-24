@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sample_app/consts/app_colors.dart';
-import 'package:sample_app/features/products/presentation/products_home/products_controller.dart';
+import 'package:sample_app/features/products/presentation/products_controller.dart';
 
 import '../../domaine/add_product_model.dart';
 import '../products_home/widgets/button_icon_widget.dart';
