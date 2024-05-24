@@ -12,4 +12,8 @@ class Category {
 
     return other is Category && other.id == id;
   }
+  
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode ^ imageUrl.hashCode;
+  
 }

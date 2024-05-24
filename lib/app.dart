@@ -1,9 +1,9 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/features/products/presentation/products_home/products_view.dart';
 
-import 'consts/app_colors.dart';
+import 'core/consts/app_colors.dart';
+
 
 class TaskApp extends StatelessWidget {
   const TaskApp({super.key});

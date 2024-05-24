@@ -1,6 +1,6 @@
 class AddProductModel {
   final String name;
-  final double price;
+  final int price;
   final String storeName;
   final List<String> imageUrl;
   final int categoryId;

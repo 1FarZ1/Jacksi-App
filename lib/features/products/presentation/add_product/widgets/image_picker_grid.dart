@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sample_app/consts/app_colors.dart';
+
+import '../../../../../core/consts/app_colors.dart';
 
 class ImagePickerGrid extends HookWidget {
   const ImagePickerGrid({

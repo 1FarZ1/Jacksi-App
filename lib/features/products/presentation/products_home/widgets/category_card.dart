@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sample_app/consts/app_colors.dart';
 
+import '../../../../../core/consts/app_colors.dart';
 import '../../../domaine/category.dart';
 
 class CategoryCard extends StatelessWidget {

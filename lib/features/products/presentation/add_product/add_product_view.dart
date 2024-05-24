@@ -3,9 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sample_app/consts/app_colors.dart';
 import 'package:sample_app/features/products/presentation/products_controller.dart';
 
+import '../../../../core/consts/app_colors.dart';
 import '../../domaine/add_product_model.dart';
 import '../products_home/widgets/button_icon_widget.dart';
 import 'widgets/custom_button.dart';
@@ -44,7 +44,7 @@ class AddProductView extends HookConsumerWidget {
       ref.read(productsControllerProvider.notifier).addProduct(
             AddProductModel(
               name: nameController.text,
-              price: double.parse(priceController.text),
+              price: int.parse(priceController.text),
               storeName: storeNameController.text,
               categoryId: category.value,
               imageUrl: images.value.map((e) => e.path).toList(),

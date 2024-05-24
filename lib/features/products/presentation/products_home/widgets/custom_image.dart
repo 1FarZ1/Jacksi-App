@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sample_app/features/products/domaine/product_model.dart';
+import 'package:sample_app/features/products/domaine/product/product_model.dart';
 
 class CustomImage extends StatelessWidget {
   const CustomImage({

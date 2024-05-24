@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sample_app/consts/app_colors.dart';
+
+import '../../../../../core/consts/app_colors.dart';
 
 class StoreWidget extends StatelessWidget {
   const StoreWidget({super.key, required this.storeName});

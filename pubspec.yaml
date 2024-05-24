@@ -1,6 +1,6 @@
 name: sample_app
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' 
 
 version: 1.0.0+1
 
@@ -17,15 +17,18 @@ dependencies:
   flutter_riverpod: ^2.5.1
   hooks_riverpod: ^2.5.1
   flutter_hooks: ^0.20.5
-  flutter_localizations:
-    sdk: flutter
   flutter_svg: ^2.0.10+1
   image_picker: ^1.1.1
   device_preview: ^1.1.0
-
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_localizations:
+    sdk: flutter
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^1.1.0
+  build_runner: ^2.0.6
 
   flutter_lints: ^3.0.0
 
@@ -41,8 +44,3 @@ flutter:
       fonts:
         - asset: fonts/Montserrat-Arabic-Regular.ttf
           style: normal
-
-
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages

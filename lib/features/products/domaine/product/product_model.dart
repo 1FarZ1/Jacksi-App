@@ -2,13 +2,24 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
 
-class ProductModel {
+part 'product_model.g.dart';
+
+
+@HiveType(typeId: 0)
+class ProductModel extends HiveObject{
+  @HiveField(0)
   final int id;
+  @HiveField(1)
   final String name;
+  @HiveField(2)
   final String storeName;
+  @HiveField(3)
   final int price;
+  @HiveField(4)
   final List<String> imageUrl;
+  @HiveField(5)
   final int categoryId;
   ProductModel({
     required this.id,

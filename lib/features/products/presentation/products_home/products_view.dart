@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sample_app/common/async_value_widget.dart';
-import 'package:sample_app/consts/app_colors.dart';
 
+import '../../../../core/consts/app_colors.dart';
 import '../../../../utils/enums.dart';
 import '../add_product/add_product_view.dart';
 import 'widgets/button_icon_widget.dart';

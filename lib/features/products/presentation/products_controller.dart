@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/product_repository.dart';
 import '../data/product_repository_impl.dart';
-import '../domaine/product_model.dart';
+import '../domaine/product/product_model.dart';
 import '../domaine/add_product_model.dart';
 import 'products_home/categories/categories_provider.dart';
 

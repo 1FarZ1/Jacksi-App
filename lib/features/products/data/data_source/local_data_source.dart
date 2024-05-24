@@ -1,8 +1,6 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sample_app/features/products/domaine/product_model.dart';
+import 'package:hive/hive.dart';
+import 'package:sample_app/features/products/domaine/product/product_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../domaine/add_product_model.dart';
@@ -11,61 +9,43 @@ final sharedPreferencesProvider = Provider<SharedPreferences>(
   (ref) => throw UnimplementedError(),
 );
 
+final hiveProvider = Provider<Box<ProductModel>>((ref) {
+  throw UnimplementedError();
+});
+
 final localProductDataSourceProvider = Provider<LocalProductDataSoruce>(
   (ref) => LocalProductDataSoruce(
-    sharedPreferences: ref.watch(sharedPreferencesProvider),
+    ref.watch(hiveProvider),
   ),
 );
 
 class LocalProductDataSoruce {
-  final SharedPreferences sharedPreferences;
+  final Box<ProductModel> _productsBox;
 
-  LocalProductDataSoruce({required this.sharedPreferences});
-  static const String _productsKey = 'products';
+  LocalProductDataSoruce(this._productsBox);
 
   Future<List<ProductModel>> getProducts(int categoryId) async {
-    final productsString = sharedPreferences.getString(_productsKey);
-    if (productsString != null) {
-      final List<dynamic> jsonData = json.decode(productsString);
-      final List<ProductModel> products = jsonData
-          .map((productJson) => ProductModel.fromJson(productJson))
+    final List<ProductModel> products = _productsBox.values.toList();
+    if (categoryId != 0) {
+      return products
+          .where((element) => element.categoryId == categoryId)
           .toList();
-
-      if (categoryId != 0) {
-        return products
-            .where((element) => element.categoryId == categoryId)
-            .toList();
-      }
-      return products;
     }
-    return [];
+    return products;
   }
 
-  // Future<void> seedData() async {
-  //   final String productsJson = json.encode(products);
-  //   await sharedPreferences.setString(_productsKey, productsJson);
-  // }
-
-  Future<void> saveProducts(List<ProductModel> products) async {
-    final String productsJson = json.encode(products);
-    await sharedPreferences.setString(_productsKey, productsJson);
-  }
-
-  Future<ProductModel> addProduct(AddProductModel addProductModel) async {
-    final List<ProductModel> products = await getProducts(0);
-
-    final product = ProductModel(
-      id: products.length + 1,
-      name: addProductModel.name,
-      price: addProductModel.price.toInt(),
-      storeName: addProductModel.storeName,
-      imageUrl: addProductModel.imageUrl,
-      categoryId: addProductModel.categoryId,
+  Future<ProductModel> addProduct(AddProductModel product) async {
+    final ProductModel productModel = ProductModel(
+      id: _productsBox.values.length + 1,
+      name: product.name,
+      storeName: product.storeName,
+      price: product.price,
+      imageUrl: product.imageUrl,
+      categoryId: product.categoryId,
     );
-
-    products.add(product);
-    await saveProducts(products);
-
-    return product;
+    await _productsBox.add(productModel);
+    return productModel;
   }
 }
+
+

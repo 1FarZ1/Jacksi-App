@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../../consts/app_colors.dart';
+import '../../../../../core/consts/app_colors.dart';
 import '../../products_home/categories/categories_provider.dart';
 
 class CustomCategoryDropDown extends HookConsumerWidget {
