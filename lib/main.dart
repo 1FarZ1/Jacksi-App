@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -18,15 +19,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(ProductModelAdapter());
-  await Hive.openBox<ProductModel>(Boxes.products.name);
-
-  final pref = await SharedPreferences.getInstance();
+  final productBox  = await Hive.openBox<ProductModel>(Boxes.products.name);
 
   runApp(ProviderScope(
       overrides: [
-        sharedPreferencesProvider.overrideWithValue(pref),
-        hiveProvider.overrideWithValue(Hive.box<ProductModel>(Boxes.products.name)),
+        hiveProvider.overrideWithValue(productBox),
       ],
       child:
-          DevicePreview(enabled: true, builder: (context) => const TaskApp())));
+          DevicePreview(enabled: !kReleaseMode, builder: (context) => const TaskApp())));
 }

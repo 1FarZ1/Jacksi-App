@@ -35,7 +35,9 @@ class ProductsController extends StateNotifier<AsyncValue<List<ProductModel>>> {
   Future<void> getProducts() async {
     state = const AsyncValue.loading();
     try {
-      final products = await productRepository.getProducts(categoryId);
+      final List<ProductModel> products = categoryId == 0
+          ? await productRepository.getAllProducts()
+          : await productRepository.getProductsbyCategory(categoryId);
       state = AsyncValue.data(products);
     } catch (e, st) {
       log(e.toString());

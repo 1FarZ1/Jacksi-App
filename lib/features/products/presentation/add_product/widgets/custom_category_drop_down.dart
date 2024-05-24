@@ -48,7 +48,10 @@ class CustomCategoryDropDown extends HookConsumerWidget {
               ),
             ),
             items: [
-              ...ref.watch(categoriesProvider).map((e) {
+              ...ref
+                  .watch(categoriesProvider)
+                  .skip(1)
+                  .map((e) {
                 return DropdownMenuItem(
                   value: e.id,
                   child: Text(e.name),
