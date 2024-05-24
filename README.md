@@ -32,6 +32,10 @@ dependencies:
   flutter_riverpod: ^2.5.1
   hooks_riverpod: ^2.5.1
   flutter_hooks: ^0.20.5
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+  device_preview: ^1.1.0
+  
 ```
 
 ## How To Run
