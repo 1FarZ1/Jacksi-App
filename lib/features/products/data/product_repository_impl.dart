@@ -9,20 +9,20 @@ import 'product_repository.dart';
 
 
 final productRepositoryProvider = Provider<ProductRepository>(
-  (ref) => ProductRepositoryImpl(
+  (ref) => LocalProductRepository(
     localDataSource: ref.watch(localProductDataSourceProvider),
   ),
 );
 
-class ProductRepositoryImpl implements ProductRepository {
+class LocalProductRepository implements ProductRepository {
   final LocalProductDataSoruce localDataSource;
 
-  ProductRepositoryImpl({
+  LocalProductRepository({
     required this.localDataSource,
   });
 
   @override
-  Future<List<ProductModel>> getAllProducts( ) async {
+  Future<List<ProductModel>> getAllProducts() async {
     return await localDataSource.getAllProducts();
   }
 
